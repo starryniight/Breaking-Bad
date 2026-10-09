@@ -1,745 +1,676 @@
-* { box-sizing: border-box;  
-    margin: 0; 
-    padding: 0; 
-    list-style: none; 
-    text-decoration: none; 
-}
+/* =========================================================
+   Breaking Bad - El ascenso de Heisenberg
+   1er Parcial DW2 - Interacción con Dispositivos Móviles
+   Diseño responsive, desktop first.
+   Breakpoints: tablet (hasta 1024px) y celular (hasta 600px)
+   ========================================================= */
 
 
-:root {
-  --oscuro: #1a2320;
-  --oscuro-2: #232e2a;
-  --claro: #f3f2ed;
-  --blanco: #ffffff;
-  --verde: #9ec5a4;
-  --verde-hover: #b6d8bb;
-  --gris: #7d8984;
-  --texto-claro: #e9ede9;
-  --texto-oscuro: #1d2522;
-  --borde-oscuro: rgba(255, 255, 255, 0.15);
-  --ancho-max: 1100px;
-  --alto-header: 90px;
-  --header-fondo: rgba(0, 10, 7, 0.76);
-  --header-filtro: blur(4px) brightness(40%);
-  --radio: 4px;
-  --transicion: 0.25s ease;
+/* ---------- Reset y base ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
- 
-html {
-  scroll-behavior: smooth;
-}
- 
+
 body {
-  margin: 0;
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: "Kumbh Sans", Arial, sans-serif;
   font-size: 1rem;
-  font-weight: 400;
   line-height: 1.6;
-  color: var(--texto-oscuro);
-  background: var(--oscuro);
-}
- 
-h2, h3, p, ul, figure {
-  margin: 0;
+  color: #1d2522;
+  background-color: #1a2320;
 }
 
-h2 {
-  font-weight: 800;
-  font-family: "Radio Canada", sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Radio Canada", Arial, sans-serif;
+  line-height: 1.2;
 }
 
 ul {
-  padding: 0;
   list-style: none;
 }
- 
-img {
-  display: block;
-  max-width: 100%;
-}
- 
+
 a {
   color: inherit;
   text-decoration: none;
 }
- 
-/* Evita que el header fijo tape el título al navegar por anclas */
-section[id],
-footer[id] {
-  scroll-margin-top: var(--alto-header);
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
- 
-/* Botones */
+
+/* Foco visible para la navegación con teclado */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #9ec5a4;
+  outline-offset: 2px;
+}
+
+
+/* ---------- Contenedor central ---------- */
+.contenedor {
+  width: 90%;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+
+/* ---------- Botones ---------- */
 .btn {
   display: inline-block;
-  padding: 10px 24px;
+  padding: 0.7rem 1.6rem;
   border: 1px solid transparent;
-  border-radius: var(--radio);
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 500;
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background var(--transicion), color var(--transicion),
-    transform var(--transicion);
+  transition: background-color 0.25s, color 0.25s;
 }
- 
-.btn:hover {
-  transform: translateY(-2px);
-}
- 
-.btn:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--verde);
-  outline-offset: 3px;
-}
- 
+
 .btn-primario {
-  background: var(--verde);
-  color: var(--oscuro);
+  background-color: #9ec5a4;
+  color: #1a2320;
 }
- 
+
 .btn-primario:hover {
-  background: var(--verde-hover);
+  background-color: #b6d8bb;
 }
- 
+
 .btn-secundario {
-  background: transparent;
-  color: inherit;
-  border-color: var(--gris);
+  border-color: #9ec5a4;
+  color: #9ec5a4;
 }
- 
+
 .btn-secundario:hover {
-  background: var(--verde);
-  border-color: var(--verde);
-  color: var(--oscuro);
+  background-color: #9ec5a4;
+  color: #1a2320;
 }
- 
-/* Header */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 200;
+
+
+/* ---------- Encabezado y navegación ---------- */
+.encabezado {
+  background-color: #f3f2ed;
+  border-bottom: 3px solid #9ec5a4;
+  padding: 0.75rem 0;
+}
+
+.encabezado-contenido {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 10px max(5%, calc((100% - var(--ancho-max)) / 2));
-  background-color: var(--header-fondo);
-  backdrop-filter: var(--header-filtro);
-  -webkit-backdrop-filter: var(--header-filtro);
-  border-radius: 0 0 10px 10px;
-  color: var(--texto-claro);
 }
 
-h1 {
-    display: flex;
-    font-size: 0;
-    height: 100px;
-    width: 100px;
-    background-image: url("../imagenes/Breaking_Bad_logo.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
+.logo img {
+  width: 5.5rem;
 }
 
-.footer .logo {
+.menu ul {
   display: flex;
-  align-items: center;
-}
-
-.footer .logo img {
-  width: 180px;
-  height: 180px;
-}
-
-.nav-principal {
-  text-align: center;
-  font-size: 1.2rem;
-}
-
-.nav-principal ul {
-  display: flex;
-  justify-content: space-evenly;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-.nav-principal a {
+.menu a {
   display: block;
-  width: 110px; 
-  padding-top: 15px;
-  padding-bottom: 15px;
-  color: var(--texto-claro);
-  text-align: center;
-  transition: 0.5s;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 2px solid transparent;
+  color: #1d2522;
+  transition: color 0.25s, border-color 0.25s;
 }
 
-.nav-principal a:hover {  color: var(--verde); }
+.menu a:hover,
+.menu a:focus {
+  color: #0f3d2a;
+  border-bottom-color: #3f6b4c;
+}
 
-/* hover (para el nav, tipo subrayado) */
-.nav-principal a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: var(--verde);
-  transition: width var(--transicion);
-}
- 
-.nav-principal a:hover { color: var(--verde); }
- 
-.nav-principal a:hover::after { width: 100%; }
- 
-/* Menú hamburguesa(oculto en desktop) */
-.menu-toggle {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
- 
-.menu-hamburguesa {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  cursor: pointer;
-}
- 
-.menu-hamburguesa .linea {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--texto-claro);
-  border-radius: 2px;
-  transition: transform var(--transicion), opacity var(--transicion);
-}
- 
-.menu-toggle:focus-visible + .menu-hamburguesa {
-  outline: 2px solid var(--verde);
-  border-radius: var(--radio);
-}
- 
-/* Hero */
+
+/* ---------- Hero ---------- */
 .hero {
   display: flex;
   align-items: center;
-  min-height: 70vh;
-  padding: 64px max(5%, calc((100% - var(--ancho-max)) / 2));
-  color: var(--blanco);
-  background:
-    linear-gradient(90deg, rgba(15, 20, 18, 0.92) 0%, rgba(15, 20, 18, 0.35) 100%),
-    url("../imagenes/Capturas/piernas.jpeg") top / cover no-repeat;
-  background-color: var(--oscuro);
+  min-height: 28rem;
+  padding: 5rem 0;
+  background-color: #1a2320;
+  background-image: url("../imagenes/hero/hero-heisenberg.jpg");
+  background-repeat: no-repeat;
+  background-position: center 5%;
+  background-size: cover;
+  color: #ffffff;
 }
- 
-.hero-contenido { max-width: 460px; }
- 
-.hero-etiqueta {
-  margin-bottom: 8px;
-  font-size: 0.8rem;
+
+.hero-contenido {
+  max-width: 34rem;
+}
+
+.hero h1 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-serie {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--verde);
+  color: #9ec5a4;
 }
- 
-.hero h2 {
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
- 
+
 .hero-bajada {
-  margin-bottom: 28px;
-  color: var(--texto-claro);
+  margin-bottom: 1.75rem;
+  font-size: 1.2rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
- 
-/* Secciones generales */
-.seccion { padding: 64px max(5%, calc((100% - var(--ancho-max)) / 2)); }
- 
+
+
+/* ---------- Secciones ---------- */
+.seccion {
+  padding: 4rem 0;
+}
+
 .seccion-clara {
-  background: var(--claro);
-  color: var(--texto-oscuro);
+  background-color: #f3f2ed;
+  color: #1d2522;
 }
- 
+
 .seccion-oscura {
-  background: var(--oscuro);
-  color: var(--texto-claro);
+  background-color: #1a2320;
+  color: #e9ede9;
 }
- 
+
 .seccion h2 {
-  margin-bottom: 20px;
-  font-size: 1.6rem;
-  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 800;
 }
- 
-.numero {
-  margin-right: 0.35em;
-  font-weight: 400;
-  color: var(--gris);
+
+/* Línea decorativa debajo de cada título de sección */
+.seccion h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin-top: 0.6rem;
+  background-color: #9ec5a4;
 }
- 
-.seccion-oscura .numero { color: var(--verde); }
- 
-/* Secciones con texto + imagen en dos columnas */
-#introduccion,
-#ficha-tecnica,
-#historia {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+
+.seccion p {
+  margin-bottom: 1.25rem;
+}
+
+.seccion-clara strong {
+  color: #0f3d2a;
+}
+
+.seccion-oscura strong {
+  color: #9ec5a4;
+}
+
+/* Cita corta: las comillas las agrega el navegador */
+q {
+  font-style: italic;
+}
+
+abbr {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+
+/* ---------- Texto + imagen en dos columnas ---------- */
+.dos-columnas {
+  display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 3rem;
 }
- 
-.seccion-texto p { margin-bottom: 24px; }
- 
-.seccion-imagen img {
+
+.invertida {
+  flex-direction: row-reverse;
+}
+
+.columna-texto {
+  flex: 1;
+}
+
+.columna-imagen {
+  width: 40%;
+  flex-shrink: 0;
+}
+
+.columna-imagen-vertical {
+  width: 34%;
+}
+
+.columna-imagen img {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: var(--radio);
-  background: var(--oscuro-2);
+  border-radius: 0.25rem;
 }
- 
-/* Ficha técnica */
-.ficha {
-  display: grid;
-  gap: 14px;
-}
- 
-.ficha li {
-  display: grid;
-  grid-template-columns: 24px 130px 1fr;
+
+
+/* ---------- Ficha técnica ---------- */
+.ficha-fila {
+  display: flex;
   align-items: center;
-  gap: 12px;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #3a4742;
 }
- 
-.ficha img {
-  width: 20px;
-  height: 20px;
+
+.ficha-fila:last-child {
+  border-bottom: none;
 }
- 
-.ficha-etiqueta {
-  color: var(--gris);
+
+.ficha dt {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 12rem;
+  color: #b5c2bb;
 }
- 
-.ficha-valor {
-  font-weight: 500;
+
+.ficha dt img {
+  width: 1.5rem;
+  height: 1.5rem;
 }
- 
-/* Personajes */
-.personajes-lista {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
+
+.ficha dd {
+  font-size: 1.1rem;
+  font-weight: 600;
 }
- 
+
+
+/* ---------- Personajes ---------- */
+.lista-personajes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.personaje {
+  width: 31%;
+  margin: 0 1% 2rem;
+  padding: 1rem;
+  border: 1px solid #3a4742;
+  border-radius: 0.25rem;
+  background-color: #232e2a;
+}
+
 .personaje img {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: var(--radio);
-  background: #c9ccc6;
-  transition: transform var(--transicion);
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
 }
- 
-.personaje:hover img { transform: translateY(-4px); }
- 
+
 .personaje h3 {
-  margin-top: 10px;
-  font-size: 0.95rem;
-}
- 
-.personaje p {
-  font-size: 0.85rem;
-  color: var(--gris);
-}
- 
-#personajes { text-align: left; }
- 
-#personajes > .btn {
-  display: table;
-  margin-inline: auto;
+  font-size: 1.4rem;
 }
 
-.personaje-rol {
-  font-weight: bold;
+.personaje h3 + p {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  color: #b5c2bb;
 }
 
-.personaje-descripcion {
+.personaje p {
   font-size: 0.95rem;
-  line-height: 1.5;
 }
 
- 
-/* Temas principales */
-.temas-lista {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+.personaje p:last-child {
+  margin-bottom: 0;
 }
- 
-.tema {
+
+
+/* ---------- Episodios destacados ---------- */
+.lista-episodios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.episodio {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 28px 16px;
-  border: 1px solid var(--borde-oscuro);
-  border-radius: var(--radio);
-  font-size: 0.9rem;
-  text-align: center;
-  transition: border-color var(--transicion), transform var(--transicion);
+  width: 48.5%;
+  margin-bottom: 2rem;
+  border: 1px solid #c9ccc6;
+  border-radius: 0.25rem;
+  background-color: #ffffff;
+  overflow: hidden;
 }
- 
-.tema:hover {
-  border-color: var(--verde);
-  transform: translateY(-4px);
-}
- 
-.tema img {
-  width: 32px;
-  height: 32px;
-}
- 
-/* Galería */
-#galeria {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  column-gap: 24px;
-}
- 
-#galeria h2 { grid-column: 1 / -1; }
- 
-.galeria-lista {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-}
- 
-.galeria-lista img {
+
+.episodio img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--radio);
-  background: #c9ccc6;
-  transition: transform var(--transicion);
 }
- 
-.galeria-lista img:hover { transform: scale(1.05); }
- 
-/* Contacto */
-.seccion-contacto {
-  color: var(--blanco);
-  background:
-    linear-gradient(90deg, rgba(15, 20, 18, 0.9), rgba(15, 20, 18, 0.6)),
-    url("../imagenes/Posters/br.jpg") center / cover no-repeat;
-  background-color: var(--oscuro);
+
+.episodio-texto {
+  padding: 1.25rem;
 }
- 
-.seccion-contacto > p {
-  margin-bottom: 24px;
-  color: var(--texto-claro);
+
+.episodio h3 {
+  font-size: 1.5rem;
 }
- 
-#form-contacto { max-width: 520px; }
- 
-.campo { margin-bottom: 16px; }
- 
+
+.episodio-datos {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #3f6b4c;
+}
+
+.episodio-texto p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------- Videos ---------- */
+.videos-intro {
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+
+.lista-videos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video {
+  width: 48.5%;
+}
+
+.video img {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+
+.video h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+
+/* ---------- Formulario de contacto ---------- */
+.campo {
+  margin-bottom: 1rem;
+}
+
 .campo label {
   display: block;
-  margin-bottom: 6px;
-  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
 }
- 
+
 .campo input,
 .campo textarea {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radio);
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--blanco);
-  font: inherit;
-  transition: border-color var(--transicion), background var(--transicion);
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #7d8984;
+  border-radius: 0.25rem;
+  background-color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1d2522;
 }
- 
-.campo textarea { resize: vertical; }
- 
+
+.campo textarea {
+  resize: vertical;
+}
+
 .campo input:focus,
 .campo textarea:focus {
-  outline: none;
-  border-color: var(--verde);
-  background: rgba(255, 255, 255, 0.14);
-}
- 
-/* Grupo de género (radios) */
-.campo-genero {
-  min-width: 0;
-  margin: 0 0 16px;
-  padding: 0;
-  border: 0;
+  border-color: #3f6b4c;
 }
 
-.campo-genero legend {
-  margin-bottom: 6px;
-  padding: 0;
-  font-size: 0.85rem;
+
+/* ---------- Footer ---------- */
+.pie {
+  padding: 2.5rem 0 1.5rem;
+  background-color: #111715;
+  color: #e9ede9;
 }
 
-.opciones-genero {
+.pie-contenido {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
-}
-
-.opciones-genero label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-}
-
-.opciones-genero input {
-  width: 18px;
-  height: 18px;
-  margin: 0;
-  accent-color: var(--verde);
-}
-
-/* Footer */
-.footer {
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 24px max(5%, calc((100% - var(--ancho-max)) / 2));
-  background: var(--oscuro);
-  color: var(--texto-claro);
-  border-top: 1px solid var(--borde-oscuro);
+  gap: 2rem;
 }
- 
-.nav-footer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 24px;
-}
- 
-.nav-footer a {
-  font-size: 0.8rem;
-  transition: color var(--transicion);
-}
- 
-.nav-footer a:hover { color: var(--verde); }
- 
-.redes {
-  display: flex;
-  gap: 16px;
 
-}
- 
-.redes a {
-  display: block;
-  transition: transform var(--transicion);
-}
- 
-.redes a:hover { transform: translateY(-3px); }
- 
-.redes i {
-  width: 25px;
-  height: 25px;
-}
- 
-/* Foto y datos del autor */
 .autor {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1.5rem;
 }
 
 .foto-autor {
+  width: 250px;
+  height: auto;
   flex-shrink: 0;
-  width: 80px;
-  height: 80px;
-  border: 2px solid var(--verde);
+  border: 3px solid #9ec5a4;
   border-radius: 50%;
-  object-fit: cover;
 }
 
-.datos-autor {
-  font-size: 0.8rem;
-  line-height: 1.5;
+.datos-autor li {
+  margin-bottom: 0.4rem;
+}
+
+.datos-autor strong {
+  color: #9ec5a4;
+}
+
+.datos-autor a:hover {
+  color: #9ec5a4;
+  text-decoration: underline;
+}
+
+.pie-lateral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.redes {
+  display: flex;
+  gap: 1rem;
+}
+
+.redes a {
+  display: block;
+  transition: opacity 0.25s;
+}
+
+.redes a:hover {
+  opacity: 0.7;
+}
+
+.volver:hover {
+  color: #9ec5a4;
+  text-decoration: underline;
+}
+
+.pie-nota {
+  width: 90%;
+  max-width: 70rem;
+  margin: 2rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid #3a4742;
+  text-align: center;
+  color: #b5c2bb;
 }
 
 
-/* TABLET  (hasta 1024px) */
+/* =========================================================
+   TABLET (hasta 1024px)
+   ========================================================= */
 @media (max-width: 1024px) {
-  .seccion {
-    padding-block: 48px;
-  }
- 
-  .hero {
-    min-height: 55vh;
-  }
- 
-  /* Header con menú hamburguesa */
-  .logo {
-    margin-right: auto;
-  }
- 
-  .menu-hamburguesa {
-    display: flex;
-    order: 3;
-  }
- 
-  .nav-principal {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    background: var(--oscuro);
-    border-bottom: 1px solid var(--borde-oscuro);
-    transition: max-height 0.35s ease, visibility 0.35s;
-  }
- 
-  .nav-principal ul {
+
+  /* Encabezado: logo arriba y menú debajo */
+  .encabezado-contenido {
     flex-direction: column;
-    gap: 0;
-    padding: 8px 5%;
+    gap: 0.5rem;
   }
- 
-  .nav-principal a {
-    display: block;
-    padding: 14px 0;
-    font-size: 1rem;
+
+  .menu ul {
+    justify-content: center;
   }
- 
-  .nav-principal a::after {
-    display: none;
+
+  .menu a {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.95rem;
   }
- 
-  /* Menú abierto */
-  .menu-toggle:checked ~ .nav-principal {
-    max-height: 420px;
-    visibility: visible;
+
+  .hero {
+    min-height: 24rem;
+    padding: 4rem 0;
   }
- 
-  /* Hamburguesa*/
-  .menu-toggle:checked + .menu-hamburguesa .linea:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+
+  .hero h1 {
+    font-size: 2.4rem;
   }
- 
-  .menu-toggle:checked + .menu-hamburguesa .linea:nth-child(2) {
-    opacity: 0;
+
+  .seccion {
+    padding: 3rem 0;
   }
- 
-  .menu-toggle:checked + .menu-hamburguesa .linea:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+
+  /* Las dos columnas pasan a una sola */
+  .dos-columnas,
+  .invertida {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
   }
- 
-  /* Contenido */
-  #introduccion,
-  #ficha-tecnica,
-  #historia {
-    grid-template-columns: 1fr;
-    gap: 32px;
+
+  .columna-imagen,
+  .columna-imagen-vertical {
+    width: 100%;
+    max-width: 30rem;
+    margin: 0 auto;
   }
- 
-  .personajes-lista {
-    grid-template-columns: repeat(3, 1fr);
+
+  .columna-imagen-vertical {
+    max-width: 22rem;
   }
- 
-  .temas-lista {
-    grid-template-columns: repeat(2, 1fr);
+
+  /* Personajes: 2 por fila */
+  .personaje {
+    width: 47%;
+    margin: 0 1.5% 2rem;
   }
- 
-  #galeria {
-    grid-template-columns: 1fr;
-    row-gap: 24px;
+
+  /* Episodios: 1 por fila, imagen a la izquierda */
+  .episodio {
+    flex-direction: row;
+    width: 100%;
   }
- 
-  .galeria-lista {
-    grid-template-columns: repeat(3, 1fr);
+
+  .episodio figure {
+    width: 38%;
+    flex-shrink: 0;
   }
- 
-  #galeria > .btn {
-    justify-self: center;
+
+  /* Footer */
+  .pie-contenido {
+    justify-content: center;
   }
 }
 
-/* MOBILE  (hasta 600px) */
+
+/* =========================================================
+   CELULAR (hasta 600px)
+   ========================================================= */
 @media (max-width: 600px) {
+
+  .menu a {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    min-height: 20rem;
+    padding: 3rem 0;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-bajada {
+    font-size: 1.05rem;
+  }
+
   .seccion {
-    padding: 40px;
+    padding: 2.5rem 0;
   }
 
   .seccion h2 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 
-  .hero {
-    min-height: 60vh;
-    background:
-      linear-gradient(0deg, rgba(15, 20, 18, 0.92) 0%, rgba(15, 20, 18, 0.45) 100%),
-      url("../imagenes/Capturas/piernas.jpeg") center / cover no-repeat;
-    background-color: var(--oscuro);
+  .columna-imagen-vertical {
+    max-width: 16rem;
   }
 
-  .ficha li {
-    grid-template-columns: 20px 100px 1fr;
-    gap: 8px;
+  /* Ficha técnica: etiqueta más angosta */
+  .ficha dt {
+    width: 9.5rem;
   }
 
-  /* Personajes: de 3 a 2 columnas */
-  .personajes-lista {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+  /* Personajes: 1 por fila */
+  .personaje {
+    width: 100%;
+    margin: 0 0 1.5rem;
   }
 
-  /* Temas: a 1 columna, icono al costado del texto */
-  .temas-lista {
-    grid-template-columns: 1fr;
+  .personaje figure {
+    max-width: 16rem;
+    margin: 0 auto;
   }
 
-  .tema {
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 15px 18px;
+  /* Episodios: imagen arriba */
+  .episodio {
+    flex-direction: column;
   }
 
-  /* Galería: de 3 a 2 columnas */
-  .galeria-lista {
-    grid-template-columns: repeat(2, 1fr);
+  .episodio figure {
+    width: 100%;
   }
 
-  .footer {
+  /* Videos: uno debajo del otro */
+  .lista-videos {
+    flex-direction: column;
+  }
+
+  .video {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .formulario .btn {
+    width: 100%;
+  }
+
+  /* Footer apilado y centrado */
+  .autor {
     flex-direction: column;
     text-align: center;
   }
 
-  .nav-footer {
-    justify-content: center;
-  }
-
-  .autor {
+  .pie-contenido {
     flex-direction: column;
-  }
-
-  
-  .personaje,
-  .tema,
-  .galeria-lista figure,
-  .ficha li {
-    min-width: 0;
   }
 }
